@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TOTA Accounting — Jérémie Maitre, CPA</title>
+  <meta name="description" content="Consultation comptable et accompagnement fiscal pour entreprises et OBNL. Revelstoke, C.-B. et Québec." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='28' fill='%23102a1d'/%3E%3Cg transform='translate(-6,-12)'%3E%3Cpolygon points='34,96 49,73 60,83 73.44,59.96 87.12,64.64 98,96' fill='%23e9c46a'/%3E%3Cpolygon points='75.54,56.36 81,47 85.42,59.74' fill='%23e9c46a'/%3E%3C/g%3E%3C/svg%3E" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = { theme: { extend: {
+      fontFamily: { display: ['Fraunces','serif'], sans: ['"Hanken Grotesk"','sans-serif'] },
+      colors: { ink:'#0b1f14', green900:'#102a1d', green700:'#1c4231', green:'#2f6546', gold:'#e9c46a', sand:'#f4a261', cream:'#f4efe4', cream2:'#e9e1cf' },
+    } } };
+  </script>
+
+  <style>
+    :root{ --ink:#0b1f14; --green900:#102a1d; --green:#2f6546; --gold:#e9c46a; --sand:#f4a261; --cream:#f4efe4; --cream2:#e9e1cf; --ease:cubic-bezier(0.22,1,0.36,1); }
+    .lenis.lenis-smooth{scroll-behavior:auto!important}
+    body{ background:var(--ink); color:var(--cream); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+    .grain::after{ content:""; position:fixed; inset:0; z-index:60; pointer-events:none; opacity:0.045; mix-blend-mode:overlay; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+    .wordmark{ font-family:'Fraunces',serif; letter-spacing:-0.02em; line-height:0.86; }
+    h1,h2,h3{ text-wrap:balance; }
+
+    header{ transition:background-color .45s var(--ease), border-color .45s var(--ease); border-bottom:1px solid transparent; }
+    header.hdr-solid{ background:rgba(11,31,20,0.84); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom-color:rgba(233,196,106,0.12); }
+
+    .drift{ display:inline-block; animation:drift 2.6s ease-in-out infinite; }
+    @keyframes drift{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(4px); } }
+    @media (prefers-reduced-motion: reduce){ .drift{ animation:none; } }
+    .progress{ position:fixed; top:0; left:0; height:2px; width:100%; transform:scaleX(0); transform-origin:left; background:linear-gradient(90deg,var(--gold),var(--sand)); z-index:70; }
+
+    .hero-bg{ background:radial-gradient(120% 90% at 26% 30%, #1a3b29 0%, #102a1d 52%, #0b1f14 100%); }
+    .ridge{ position:absolute; left:0; right:0; bottom:0; width:100%; will-change:transform; }
+
+    .alt-ind{ position:fixed; right:24px; top:50%; transform:translateY(-50%); z-index:40; display:none; flex-direction:column; align-items:center; gap:10px; color:var(--gold); }
+    @media(min-width:1024px){ .alt-ind{ display:flex; } }
+    .alt-val{ font-family:'Fraunces',serif; font-size:13px; letter-spacing:0.04em; }
+    .alt-val small{ font-size:9px; opacity:0.7; }
+    .alt-track{ position:relative; width:1px; height:150px; background:rgba(233,196,106,0.25); }
+    .alt-dot{ position:absolute; left:50%; top:0%; width:7px; height:7px; border-radius:50%; background:var(--sand); transform:translate(-50%,-50%); box-shadow:0 0 0 4px rgba(244,162,97,0.15); }
+    .alt-cap{ font-size:9px; letter-spacing:0.3em; opacity:0.6; writing-mode:vertical-rl; }
+
+    .link-u{ position:relative; }
+    .link-u::after{ content:""; position:absolute; left:0; bottom:-3px; height:1px; width:100%; background:var(--sand); transform:scaleX(0); transform-origin:left; transition:transform .45s var(--ease); }
+    .link-u:hover::after,.link-u:focus-visible::after{ transform:scaleX(1); }
+
+    .btn{ transition:transform .35s var(--ease), background-color .35s var(--ease), color .35s var(--ease), box-shadow .35s var(--ease); }
+    .btn:hover{ transform:translateY(-2px); } .btn:active{ transform:translateY(0); }
+
+    .reveal{ opacity:0; }
+    .hairline{ height:1px; background:linear-gradient(90deg,transparent,rgba(233,196,106,0.4),transparent); }
+    :focus-visible{ outline:2px solid var(--gold); outline-offset:3px; border-radius:3px; }
+    ::selection{ background:var(--gold); color:var(--ink); }
+
+    .ridge-sep{ display:block; width:100%; height:64px; }
+
+    /* Cartes services : grille, toutes visibles, elevation premium */
+    .svc-card{ background:#fdfbf6; border:1px solid rgba(16,42,29,0.10); border-radius:18px; padding:2rem 1.9rem; box-shadow:0 1px 2px rgba(16,42,29,0.05); transition:transform .5s var(--ease), box-shadow .5s var(--ease), border-color .5s var(--ease); }
+    .svc-card:hover{ transform:translateY(-6px); border-color:rgba(47,101,70,0.4); box-shadow:0 26px 48px -26px rgba(31,66,49,0.45); }
+    .svc-n{ font-family:'Fraunces',serif; font-size:1.05rem; color:var(--green); opacity:0.55; transition:color .5s var(--ease), opacity .5s var(--ease); }
+    .svc-card:hover .svc-n{ color:var(--sand); opacity:1; }
+    .svc-rule{ height:1px; background:rgba(16,42,29,0.12); margin:1.35rem 0; transition:background-color .5s var(--ease); }
+    .svc-card:hover .svc-rule{ background:rgba(47,101,70,0.3); }
+    .svc-h{ font-family:'Fraunces',serif; font-size:1.4rem; line-height:1.1; color:var(--ink); margin-bottom:0.6rem; }
+    .svc-p{ font-size:15px; line-height:1.62; color:rgba(11,31,20,0.72); }
+  </style>
+</head>
+
+<body class="grain font-sans">
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <div class="alt-ind" aria-hidden="true">
+    <span class="alt-val"><span id="altNum">443</span><small>m</small></span>
+    <div class="alt-track"><div class="alt-dot" id="altDot"></div></div>
+    <span class="alt-cap">ALT</span>
+  </div>
+
+  <header class="fixed top-0 inset-x-0 z-50">
+    <nav class="mx-auto max-w-7xl px-6 md:px-10 h-20 flex items-center justify-between">
+      <a href="#top" aria-label="TOTA Accounting, retour en haut" class="btn block">
+        <svg viewBox="30 44 74 56" width="44" height="33" aria-hidden="true"><polygon points="34,96 49,73 60,83 73.44,59.96 87.12,64.64 98,96" fill="#e9c46a"/><polygon points="75.54,56.36 81,47 85.42,59.74" fill="#e9c46a"/></svg>
+      </a>
+      <div class="hidden md:flex items-center gap-9 text-[13px] tracking-wide text-cream/80">
+        <a href="#services" class="link-u hover:text-cream">Services</a>
+        <a href="#apropos" class="link-u hover:text-cream">À propos</a>
+        <a href="#contact" class="link-u hover:text-cream">Contact</a>
+      </div>
+      <div class="flex items-center gap-5">
+        <div class="hidden sm:flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase">
+          <span class="text-gold" aria-current="true">FR</span>
+          <span class="text-cream/40">·</span>
+          <a href="index.html" class="link-u text-cream/55 hover:text-cream">EN</a>
+        </div>
+        <a href="#contact" class="btn rounded-full bg-gold text-ink px-5 py-2 text-[13px] font-medium hover:bg-sand">Discutons</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="top" class="hero-bg relative min-h-screen flex items-center overflow-hidden">
+    <div class="relative z-10 w-full mx-auto max-w-7xl px-6 md:px-10 pt-28 pb-44">
+      <p class="hero-line text-[11px] tracking-[0.3em] uppercase text-gold mb-6">Comptable CPA · Revelstoke, C.-B.</p>
+      <svg class="hero-line w-[122px] md:w-[170px] h-auto mb-6" viewBox="0 0 120 112" fill="none" aria-hidden="true"><g transform="translate(-1.72,7.68) scale(0.92)"><polygon points="34,96 49,73 60,83 73.44,59.96 87.12,64.64 98,96" fill="#e9c46a"/><polygon points="75.54,56.36 81,47 85.42,59.74" fill="#e9c46a"/></g><path d="M20,96 L20,20 M20,96 L104,96" stroke="#f4efe4" stroke-width="2.6" stroke-linecap="round"/><path d="M15.5,26 L20,19 L24.5,26 M98,91.5 L105,96 L98,100.5" stroke="#f4efe4" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h1 class="wordmark text-cream">
+        <span class="hero-line block text-[clamp(3.4rem,13vw,10rem)] font-medium">TOTA</span>
+        <span class="hero-line block text-[clamp(2.6rem,9vw,7rem)] font-normal -mt-2 text-gold">Accounting</span>
+      </h1>
+      <div class="hero-line mt-10 flex flex-col md:flex-row md:items-end md:justify-between gap-8 max-w-4xl">
+        <p class="text-[clamp(1.05rem,2.1vw,1.45rem)] leading-snug text-cream/85 max-w-md">
+          Consultation comptable et accompagnement fiscal pour entreprises et OBNL.
+        </p>
+        <a href="#services" class="btn shrink-0 inline-flex items-center gap-2 rounded-full bg-cream text-ink px-7 py-3.5 text-sm font-medium hover:bg-gold">
+          Découvrir les services <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </div>
+
+    <svg class="hidden lg:block absolute right-[-40px] top-[16%] w-[640px] pointer-events-none" viewBox="0 0 140 60" fill="none" aria-hidden="true">
+      <path class="ghost-line" d="M6,54 L36,22 L52,36 L74,8 L96,16 L118,54" stroke="#f4efe4" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" opacity="0.09"/>
+      <path class="ghost-line" d="M77,5 L82,0.5 L86,6" stroke="#e9c46a" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round" opacity="0.18"/>
+    </svg>
+
+    <svg class="ridge" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMax slice" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path class="ridge-back" d="M0,300 L150,250 L300,285 L470,210 L640,275 L820,195 L1010,280 L1220,225 L1440,285 L1440,420 L0,420 Z" fill="#173b29"/>
+      <path class="ridge-mid" d="M0,330 L190,290 L380,332 L560,265 L740,322 L940,255 L1150,322 L1330,285 L1440,322 L1440,420 L0,420 Z" fill="#11301f"/>
+      <path class="ridge-front" d="M0,365 L210,342 L400,372 L590,330 L790,372 L1010,338 L1230,372 L1440,344 L1440,420 L0,420 Z" fill="#0b1f14"/>
+      <path id="crest" d="M0,365 L210,342 L400,372 L590,330 L790,372 L1010,338 L1230,372 L1440,344" stroke="#e9c46a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+      <g class="alt-marker" opacity="0">
+        <line x1="590" y1="330" x2="590" y2="250" stroke="#e9c46a" stroke-width="1" stroke-dasharray="3 4" opacity="0.6"/>
+        <circle cx="590" cy="330" r="4" fill="#f4a261"/>
+        <text x="600" y="244" fill="#e9c46a" font-family="Hanken Grotesk, sans-serif" font-size="14" letter-spacing="2">443 m · REVELSTOKE</text>
+      </g>
+    </svg>
+    <div class="absolute bottom-7 right-6 md:right-10 z-10 text-[11px] tracking-[0.28em] uppercase text-cream/55">Défiler <span class="drift" aria-hidden="true">↓</span></div>
+  </section>
+
+  <!-- VALEUR -->
+  <section class="relative bg-green900 pt-24 md:pt-32 pb-28 md:pb-40 px-6 md:px-10">
+    <div class="mx-auto max-w-7xl grid md:grid-cols-12 gap-10 md:gap-16 items-start">
+      <div class="md:col-span-5 reveal">
+        <p class="text-[11px] tracking-[0.3em] uppercase text-sand mb-6">L'approche</p>
+        <h2 class="wordmark text-[clamp(2.2rem,4.6vw,3.6rem)] leading-[1.06] text-cream">
+          Exploitez le plein potentiel de vos <span class="text-gold italic">finances.</span>
+        </h2>
+      </div>
+      <div class="md:col-span-7 reveal">
+        <p class="text-[1.15rem] leading-relaxed text-cream/80 max-w-[60ch]">
+          Aider les entreprises autour de moi à optimiser leurs tâches administratives, à prendre de judicieuses décisions et à rendre leurs idées réalité. Je veux créer des partenariats, plus que la relation traditionnelle client / fournisseur.
+        </p>
+        <div class="mt-10 grid sm:grid-cols-3 gap-px bg-cream/10 rounded-2xl overflow-hidden border border-cream/10">
+          <div class="bg-green900 p-6"><div class="wordmark text-4xl text-gold" data-count="8">0</div><div class="text-[12px] tracking-wide text-cream/65 mt-2">ans d'expérience</div></div>
+          <div class="bg-green900 p-6"><div class="wordmark text-4xl text-gold">FR·EN</div><div class="text-[12px] tracking-wide text-cream/65 mt-2">bilingue</div></div>
+          <div class="bg-green900 p-6"><div class="wordmark text-4xl text-gold">CPA</div><div class="text-[12px] tracking-wide text-cream/65 mt-2">titre comptable</div></div>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-x-8 gap-y-3">
+          <span class="inline-flex items-center gap-2 text-sm text-cream/85"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f4a261" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Solutions sur mesure</span>
+          <span class="inline-flex items-center gap-2 text-sm text-cream/85"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f4a261" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Conformité QC + C.-B.</span>
+          <span class="inline-flex items-center gap-2 text-sm text-cream/85"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f4a261" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Approche partenariale</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="bg-green900"><svg class="ridge-sep" viewBox="0 0 1440 64" preserveAspectRatio="none" fill="none" aria-hidden="true"><path class="ridge-line" d="M0,46 L240,26 L430,44 L650,16 L880,42 L1100,22 L1320,44 L1440,30" stroke="#e9c46a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/></svg></div>
+
+  <!-- SERVICES : grille, les 6 visibles d'un coup d'oeil -->
+  <section id="services" class="relative bg-cream text-ink py-24 md:py-36 px-6 md:px-10 scroll-mt-20 overflow-hidden">
+    <svg class="absolute -top-16 -right-28 w-[520px] md:w-[640px] pointer-events-none" viewBox="0 0 600 600" fill="none" aria-hidden="true" style="opacity:0.055">
+      <path d="M300,120 C400,110 500,180 505,280 C510,385 420,480 305,485 C190,490 95,400 95,295 C95,195 195,130 300,120 Z" stroke="#0b1f14" stroke-width="1.2"/>
+      <path d="M300,160 C385,152 465,205 470,285 C475,370 400,445 305,448 C210,452 135,380 135,295 C135,215 215,168 300,160 Z" stroke="#0b1f14" stroke-width="1.2"/>
+      <path d="M302,200 C370,194 430,232 434,290 C438,355 378,410 305,412 C230,415 175,360 176,296 C177,235 235,206 302,200 Z" stroke="#0b1f14" stroke-width="1.2"/>
+      <path d="M303,240 C352,236 396,260 398,296 C400,340 356,375 306,376 C254,378 216,340 217,297 C218,258 255,244 303,240 Z" stroke="#0b1f14" stroke-width="1.2"/>
+      <path d="M304,278 C334,275 362,286 363,300 C364,322 338,340 307,340 C276,341 253,322 254,300 C255,282 275,281 304,278 Z" stroke="#0b1f14" stroke-width="1.2"/>
+    </svg>
+    <div class="relative mx-auto max-w-7xl">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 reveal">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <p class="text-[11px] tracking-[0.3em] uppercase text-green">Services</p>
+            <svg width="28" height="21" viewBox="30 44 74 56" aria-hidden="true"><polygon points="34,96 49,73 60,83 73.44,59.96 87.12,64.64 98,96" fill="#2f6546"/><polygon points="75.54,56.36 81,47 85.42,59.74" fill="#2f6546"/></svg>
+          </div>
+          <h2 class="wordmark text-[clamp(2.3rem,5vw,3.8rem)] leading-[1.02] text-ink">Consultation comptable<br/>et processus fiscal</h2>
+        </div>
+        <p class="md:max-w-xs text-ink/65 leading-relaxed text-[15px] max-w-[44ch]">Pour entreprises et organisations, des deux côtés du pays. Québec et Colombie-Britannique.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="svc-grid">
+        <article class="svc-card reveal"><div class="svc-n">01</div><div class="svc-rule"></div><h3 class="svc-h">Déclarations de revenus</h3><p class="svc-p">Préparation et production des déclarations de vos sociétés. Exactitude, respect des échéances et optimisation fiscale légitime.</p></article>
+        <article class="svc-card reveal"><div class="svc-n">02</div><div class="svc-rule"></div><h3 class="svc-h">Révision périodique</h3><p class="svc-p">Un regard régulier sur vos chiffres, mensuel ou trimestriel, pour garder vos livres à jour et repérer tôt les écarts.</p></article>
+        <article class="svc-card reveal"><div class="svc-n">03</div><div class="svc-rule"></div><h3 class="svc-h">Accompagnement stratégique</h3><p class="svc-p">Plus qu'un fournisseur, un partenaire. J'analyse votre situation et vous aide à planifier croissance et grandes décisions financières.</p></article>
+        <article class="svc-card reveal"><div class="svc-n">04</div><div class="svc-rule"></div><h3 class="svc-h">Optimisation des processus</h3><p class="svc-p">Examiner vos tâches administratives pour éliminer les inefficacités et vous redonner du temps. Moins de saisie, moins d'erreurs, plus de clarté.</p></article>
+        <article class="svc-card reveal"><div class="svc-n">05</div><div class="svc-rule"></div><h3 class="svc-h">Analyse de données</h3><p class="svc-p">Transformez vos données en décisions. Tableaux de bord, modèles Excel avancés et intelligence d'affaires pour visualiser votre performance.</p></article>
+        <article class="svc-card reveal"><div class="svc-n">06</div><div class="svc-rule"></div><h3 class="svc-h">Implantation de systèmes</h3><p class="svc-p">Mise en place de systèmes de paie, comptables et opérationnels adaptés à votre réalité. De la sélection à la formation de votre équipe.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <div class="bg-ink"><svg class="ridge-sep" viewBox="0 0 1440 64" preserveAspectRatio="none" fill="none" aria-hidden="true"><path class="ridge-line" d="M0,30 L240,44 L430,20 L650,46 L880,22 L1100,44 L1320,24 L1440,40" stroke="#e9c46a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/></svg></div>
+
+  <!-- À PROPOS -->
+  <section id="apropos" class="relative bg-ink py-24 md:py-36 px-6 md:px-10 scroll-mt-20 overflow-hidden">
+    <div class="mx-auto max-w-7xl">
+      <div class="max-w-3xl reveal">
+        <p class="text-[11px] tracking-[0.3em] uppercase text-sand mb-6">À propos</p>
+        <h2 class="wordmark text-[clamp(2.1rem,4.8vw,3.6rem)] leading-[1.08] text-cream mb-8">La comptabilité,<br/><span class="italic text-gold">en mode partenariat.</span></h2>
+        <div class="space-y-5 text-cream/80 leading-relaxed text-[1.05rem] max-w-[62ch]">
+          <p>TOTA Accounting, c'est une relation de collaboration, transparente et pensée pour le long terme. L'objectif est simple : vous faire sauver du temps et de l'argent sur vos tâches administratives, pour que vous puissiez vous concentrer sur votre entreprise et profiter de la vie.</p>
+          <p>Apprentissage continu, proactivité et fiabilité guident chaque mandat.</p>
+        </div>
+        <div class="mt-9 flex flex-wrap gap-3">
+          <span class="rounded-full border border-cream/20 px-4 py-1.5 text-sm text-cream/85">Partenariat</span>
+          <span class="rounded-full border border-cream/20 px-4 py-1.5 text-sm text-cream/85">Transparence</span>
+          <span class="rounded-full border border-cream/20 px-4 py-1.5 text-sm text-cream/85">Apprentissage continu</span>
+          <span class="rounded-full border border-cream/20 px-4 py-1.5 text-sm text-cream/85">Proactivité</span>
+          <span class="rounded-full border border-cream/20 px-4 py-1.5 text-sm text-cream/85">Fiabilité</span>
+        </div>
+      </div>
+
+      <div class="mt-16 grid md:grid-cols-12 gap-12 items-center reveal">
+        <div class="md:col-span-5">
+          <div class="photo-frame relative rounded-2xl overflow-hidden border border-cream/15 aspect-[4/5]">
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=80" alt="Sommets enneigés près de Revelstoke" class="about-photo w-full h-full object-cover scale-[1.16] will-change-transform" loading="lazy" onerror="this.style.display='none'" />
+            <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(11,31,20,0.85), rgba(47,101,70,0.25)); mix-blend-mode:multiply;"></div>
+          </div>
+          <p class="mt-4 text-[12px] text-cream/55">Photo de Jérémie à venir · visuel temporaire</p>
+        </div>
+        <div class="md:col-span-7">
+          <p class="text-[11px] tracking-[0.3em] uppercase text-sand mb-5">Derrière TOTA Accounting</p>
+          <h3 class="wordmark text-[clamp(1.7rem,3.6vw,2.6rem)] leading-[1.14] text-cream mb-6">Comptable, amateur de plein air.<br/><span class="italic text-gold">Analytique de nature.</span></h3>
+          <p class="text-cream/80 leading-relaxed max-w-[55ch]">8 années d'expérience en comptabilité d'entreprise, analyse de données, gestion, technologie et domaine financier.</p>
+          <p class="mt-4 text-cream/70 leading-relaxed max-w-[55ch]">La montagne et la comptabilité demandent la même rigueur : lire le terrain, préparer sa route et avancer avec constance. C'est l'approche derrière chaque mandat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="bg-ink"><svg class="ridge-sep" viewBox="0 0 1440 64" preserveAspectRatio="none" fill="none" aria-hidden="true"><path class="ridge-line" d="M0,44 L240,24 L430,46 L650,18 L880,44 L1100,22 L1320,44 L1440,28" stroke="#e9c46a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/></svg></div>
+
+  <!-- CONTACT -->
+  <section id="contact" class="relative bg-green900 py-24 md:py-36 px-6 md:px-10 scroll-mt-20 overflow-hidden">
+    <div class="mx-auto max-w-7xl relative z-10">
+      <div class="text-center mb-16 reveal">
+        <p class="text-[11px] tracking-[0.3em] uppercase text-sand mb-5">Contact</p>
+        <h2 class="wordmark text-[clamp(2.6rem,6.5vw,5rem)] leading-[1] text-cream">Créons un <span class="italic text-gold">partenariat.</span></h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5 max-w-4xl mx-auto">
+        <a href="tel:+14388601240" class="btn reveal rounded-2xl border border-cream/12 bg-ink/40 p-7 text-center hover:border-sand/50 hover:-translate-y-1"><p class="text-[11px] tracking-[0.25em] uppercase text-sand mb-3">Téléphone</p><p class="wordmark text-lg text-cream">438 860 1240</p></a>
+        <a href="mailto:jeremie.maitre@totaaccounting.com" class="btn reveal rounded-2xl border border-cream/12 bg-ink/40 p-7 text-center hover:border-sand/50 hover:-translate-y-1"><p class="text-[11px] tracking-[0.25em] uppercase text-sand mb-3">Courriel</p><p class="wordmark text-[14px] text-cream break-words">jeremie.maitre<wbr/>@totaaccounting.com</p></a>
+        <a href="https://linkedin.com/in/jeremie-maitre-cpa-127119189" target="_blank" rel="noopener" class="btn reveal rounded-2xl border border-cream/12 bg-ink/40 p-7 text-center hover:border-sand/50 hover:-translate-y-1"><p class="text-[11px] tracking-[0.25em] uppercase text-sand mb-3">LinkedIn</p><p class="wordmark text-lg text-cream">jeremie-maitre-cpa</p></a>
+      </div>
+      <p class="mt-10 text-center text-cream/70 reveal">1531 Mountain View Drive, Revelstoke, C.-B. &nbsp;V0E 2S1</p>
+      <p class="mt-3 text-center text-[11px] tracking-[0.25em] text-sand/70 reveal">50.9981° N · 118.1957° O · ALT. 443 M</p>
+    </div>
+  </section>
+
+  <footer class="bg-ink border-t border-cream/10 py-12 px-6 md:px-10">
+    <div class="mx-auto max-w-7xl flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <svg viewBox="30 44 74 56" width="42" height="32" aria-hidden="true"><polygon points="34,96 49,73 60,83 73.44,59.96 87.12,64.64 98,96" fill="#e9c46a"/><polygon points="75.54,56.36 81,47 85.42,59.74" fill="#e9c46a"/></svg>
+        <div><p class="wordmark text-xl text-cream">TOTA Accounting</p><p class="text-[12px] text-cream/55">Jérémie Maitre, CPA · totaaccounting.com</p></div>
+      </div>
+      <div class="md:text-right text-[12px] leading-relaxed text-cream/60 max-w-md">
+        <p>Confidentialité : les renseignements financiers transmis sont traités de façon strictement confidentielle et ne sont jamais partagés sans votre consentement.</p>
+        <p class="mt-2">© 2026 TOTA Accounting. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.14/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function initLenis(){
+      if(reduce || typeof Lenis === 'undefined') return;
+      const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+      lenis.on('scroll', () => { if(window.ScrollTrigger) ScrollTrigger.update(); });
+      gsap.ticker.add((t)=> lenis.raf(t*1000));
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    function initHeader(){
+      const hdr = document.querySelector('header');
+      if(!hdr) return;
+      const update = () => hdr.classList.toggle('hdr-solid', window.scrollY > 40);
+      window.addEventListener('scroll', update, { passive:true });
+      update();
+    }
+
+    function initAltimeter(){
+      const dot = document.getElementById('altDot');
+      const num = document.getElementById('altNum');
+      if(!dot || !num) return;
+      const MIN = 443, MAX = 2450;
+      const update = () => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+        dot.style.top = (p*100) + '%';
+        num.textContent = Math.round(MIN + p*(MAX-MIN));
+      };
+      window.addEventListener('scroll', update, { passive:true });
+      window.addEventListener('resize', update);
+      update();
+    }
+
+    function drawPath(el, dur){
+      if(!el) return;
+      const len = el.getTotalLength();
+      el.style.strokeDasharray = len; el.style.strokeDashoffset = len;
+      gsap.to(el, { strokeDashoffset:0, duration:dur, ease:'power2.out', scrollTrigger:{ trigger:el, start:'top 92%' } });
+    }
+
+    function initMotion(){
+      if(typeof gsap === 'undefined'){ document.querySelectorAll('.reveal,.hero-line').forEach(e=>e.style.opacity=1); return; }
+      if(window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
+
+      gsap.to('#progress', { scaleX:1, ease:'none', scrollTrigger:{ trigger:'body', start:'top top', end:'bottom bottom', scrub:0.3 } });
+
+      gsap.set('.hero-line', { opacity:0, y:34 });
+      gsap.to('.hero-line', { opacity:1, y:0, duration:1, ease:'power3.out', stagger:0.12, delay:0.2 });
+
+      const crest = document.getElementById('crest');
+      if(crest){ const len=crest.getTotalLength(); crest.style.strokeDasharray=len; crest.style.strokeDashoffset=len; gsap.to(crest,{ strokeDashoffset:0, duration:2.4, ease:'power2.out', delay:0.5 }); }
+
+      document.querySelectorAll('.ghost-line').forEach((el)=>{
+        const len = el.getTotalLength();
+        el.style.strokeDasharray = len; el.style.strokeDashoffset = len;
+        gsap.to(el, { strokeDashoffset:0, duration:2.8, ease:'power2.out', delay:0.9 });
+      });
+
+      gsap.fromTo('.about-photo', { yPercent:-7 }, { yPercent:7, ease:'none', scrollTrigger:{ trigger:'.photo-frame', start:'top bottom', end:'bottom top', scrub:true } });
+      gsap.to('.alt-marker', { opacity:1, duration:1, delay:2.4 });
+
+      ['.ridge-back','.ridge-mid','.ridge-front'].forEach((sel,i)=>{
+        gsap.to(sel, { yPercent:-(6+i*5), ease:'none', scrollTrigger:{ trigger:'#top', start:'top top', end:'bottom top', scrub:true } });
+      });
+
+      document.querySelectorAll('.ridge-line').forEach(el => drawPath(el, 1.6));
+
+      gsap.utils.toArray('.reveal').forEach((el)=>{
+        if(el.classList.contains('svc-card')) return;
+        gsap.fromTo(el, { opacity:0, y:30 }, { opacity:1, y:0, duration:1, ease:'power3.out', scrollTrigger:{ trigger:el, start:'top 86%' } });
+      });
+      gsap.fromTo('.svc-card', { opacity:0, y:24 }, { opacity:1, y:0, duration:0.7, ease:'power3.out', stagger:0.09, scrollTrigger:{ trigger:'#svc-grid', start:'top 82%' } });
+
+      gsap.utils.toArray('[data-count]').forEach((el)=>{
+        const end=+el.dataset.count;
+        ScrollTrigger.create({ trigger:el, start:'top 90%', once:true, onEnter:()=>{ const o={v:0}; gsap.to(o,{ v:end, duration:1.6, ease:'power2.out', onUpdate:()=> el.textContent=Math.round(o.v) }); }});
+      });
+    }
+
+    window.addEventListener('load', () => { initHeader(); initAltimeter(); initLenis(); initMotion(); });
+  </script>
+</body>
+</html>
